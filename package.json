@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/cjohnson74/Shopify_Developer_Intern_Challenge_Fall_2022/issues"
   },
-  "homepage": "https://github.com/cjohnson74/Shopify_Developer_Intern_Challenge_Fall_2022#readme"
+  "homepage": "https://github.com/cjohnson74/Shopify_Developer_Intern_Challenge_Fall_2022#readme",
+  "dependencies": {
+    "sequelize": "^6.19.2"
+  }
 }
