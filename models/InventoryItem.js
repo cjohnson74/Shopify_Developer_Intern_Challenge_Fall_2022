@@ -20,7 +20,7 @@ InventoryItem.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        preice: {
+        price: {
             type: DataTypes.DECIMAL,
             allowNull: false,
             validate: {
@@ -47,7 +47,7 @@ InventoryItem.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'product',
+        modelName: 'inventoryItem',
     }
 );
 
