@@ -13,7 +13,11 @@ Warehouse.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        category_name: {
+        warehouse_location: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        warehouse_name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
