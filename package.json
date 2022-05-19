@@ -1,0 +1,20 @@
+{
+  "name": "shopify_developer_intern_challenge_fall_2022",
+  "version": "1.0.0",
+  "description": "## Step 1. TASK:  Build an inventory tracking web application for a logistics company. We are looking for a web application that meets the requirements listed below, along with one additional feature, with the options also listed below.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cjohnson74/Shopify_Developer_Intern_Challenge_Fall_2022.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cjohnson74/Shopify_Developer_Intern_Challenge_Fall_2022/issues"
+  },
+  "homepage": "https://github.com/cjohnson74/Shopify_Developer_Intern_Challenge_Fall_2022#readme"
+}
