@@ -4,7 +4,10 @@
   "description": "## Step 1. TASK:  Build an inventory tracking web application for a logistics company. We are looking for a web application that meets the requirements listed below, along with one additional feature, with the options also listed below.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "watch": "nodemon server.js",
+    "seed": "node seeds/index.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +21,9 @@
   },
   "homepage": "https://github.com/cjohnson74/Shopify_Developer_Intern_Challenge_Fall_2022#readme",
   "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mysql2": "^2.3.3",
     "sequelize": "^6.19.2"
   }
 }

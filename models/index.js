@@ -11,3 +11,8 @@ Warehouse.hasMany(InventoryItem, {
     foreignKey: 'warehouse_id',
     onDelete: 'CASCADE',
 });
+
+module.exports = {
+    InventoryItem,
+    Warehouse,
+};
