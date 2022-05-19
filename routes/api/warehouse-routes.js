@@ -53,7 +53,7 @@ router.put('/:id', (req, res) => {
     })
     .then((warehouse) => {
         if (!warehouse) {
-            res.status(404).json({ message: "No category with this id!" });
+            res.status(404).json({ message: "No warehouse with this id!" });
             return;
         }
         res.status(200).json(warehouse);

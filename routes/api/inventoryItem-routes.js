@@ -49,3 +49,24 @@ router.post('/', (req, res) => {
             res.status(400).json(err);
         });
 });
+
+// update inventoryItem
+router.put('/:id', (req, res) => {
+    // update inventoryItem data
+    InventoryItem.update(req.body, {
+        where: {
+            id: req.params.id,
+        },
+    })
+    .then((inventoryItem) => {
+        if (!inventoryItem) {
+            res.status(404).json({ message: "No inventoryItem with this id!" });
+            return;
+        }
+        res.status(200).json(inventoryItem);
+    })
+    .catch((err) => {
+        
+        res.status(500).json(err);
+    });
+})
