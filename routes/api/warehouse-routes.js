@@ -62,3 +62,20 @@ router.put('/:id', (req, res) => {
         res.status(500).json(err);
     });
 });
+router.delete('/:id', (req, res) => {
+    // delete a warehouse by its 'id' value
+    Warehouse.destroy({
+        where: {
+            id: req.params.id,
+        },
+    })
+    .then((warehouse) => {
+        console.log(warehouse);
+        res.json(warehouse)
+    })
+    .catch((err) => {
+        res.status(500).json(err);
+    });
+});
+
+module.exports = router;
