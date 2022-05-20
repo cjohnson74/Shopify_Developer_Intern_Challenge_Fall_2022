@@ -9,6 +9,7 @@ CREATE DATABASE shopify_db;
 -- DROP TABLE IF EXISTS warehouse;
 -- CREATE TABLE warehouse (
 --      id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+--      warehouse_location VARCHAR(30) NOT NULL,
 --      warehouse_name VARCHAR(30) NOT NULL
 -- );
 

@@ -31,7 +31,7 @@ router.get('/:id', (req, res) => {
             Warehouse,
         ],
     })
-        .then((inventoryItem) => res.json(inventoryItems))
+        .then((inventoryItems) => res.json(inventoryItems))
         .catch((err) => {
             console.log(err);
             res.status(400).json(err);
@@ -66,7 +66,26 @@ router.put('/:id', (req, res) => {
         res.status(200).json(inventoryItem);
     })
     .catch((err) => {
-        
+
         res.status(500).json(err);
     });
-})
+});
+
+router.delete('/:id', (req, res) => {
+    // delete one inventoryItem by its 'id' value
+    InventoryItem.destroy({
+        where: {
+            id: req.params.id,
+        },
+    })
+        .then((inventoryItems) => {
+            console.log(inventoryItems);
+            res.json(inventoryItems);
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(400).json(err);
+        });
+});
+
+module.exports = router;
