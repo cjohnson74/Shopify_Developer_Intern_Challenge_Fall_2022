@@ -1,17 +1,15 @@
 const newInventoryItemHandler = async (event) => {
 
-    const inventoryItemName = document.querySelector('#inventoryItem-name').value.trim();
-    const inventoryItemPrice = document.querySelector('#inventoryItem-price').value.trim();
-    const inventoryItemStock = document.querySelector('#inventoryItem-stock').value.trim();
-    const inventoryItemWarehouse_id = document.querySelector('#inventoryItem-stock').value.trim();
+    const name = document.querySelector('#inventoryItem-name').value.trim();
+    const price = document.querySelector('#inventoryItem-price').value.trim();
+    const stock = document.querySelector('#inventoryItem-stock').value.trim();
     const dataElement = document.getElementById('warehouse-id');
     var warehouse_id = dataElement.getAttribute('data-id');
-    console.log(warehouse_id);
-    if (inventoryItemName) {
-        await fetch('/api/inventoryItems', {
+    console.log(name, price, stock, warehouse_id);
+    if (name) {
+        await fetch('/api/inventoryitems/', {
             method: 'POST',
-            body: JSON.stringify({ inventoryItemName, inventoryItemPrice, inventoryItemStock, inventoryItemWarehouse_id
-            }),
+            body: JSON.stringify({ name, price, stock, warehouse_id}),
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -21,7 +19,7 @@ const newInventoryItemHandler = async (event) => {
                 fetch('/api/warehouses/' + warehouse_id, {
                     method: 'GET',
                 });
-                window.location.reload();
+                event.preventDefault();
             } else {
                 alert('Failed to create inventoryItem');
             }
@@ -30,5 +28,5 @@ const newInventoryItemHandler = async (event) => {
 }
 
 document
-    .querySelector('.new-inventoryItem-form')
+    .querySelector('#new-inventoryItem-form')
     .addEventListener('submit', newInventoryItemHandler);

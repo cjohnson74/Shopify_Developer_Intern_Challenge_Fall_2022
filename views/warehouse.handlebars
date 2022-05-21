@@ -2,6 +2,7 @@
   {{location}}
   <small class="text-muted">{{name}}</small>
 </h1>
+<button type="button" class="btn btn-danger" id="warehouse-destroy" data-id={{id}}>DELETE</button>
 <h4>Create a New Warehouse Inventory Item:</h4>
 <form class="form" id="new-inventoryItem-form">
   <div class="mb-3">
@@ -10,7 +11,6 @@
       type="text"
       class="form-control"
       id="inventoryItem-name"
-      name="inventoryItem-name"
     ></textarea>
   </div>
   <div class="mb-3">
@@ -19,7 +19,6 @@
       type="text"
       class="form-control"
       id="inventoryItem-price"
-      name='inventoryItem-price'
     ></textarea>
   </div>
   <div class="mb-3">
@@ -28,33 +27,25 @@
       type="text"
       class="form-control"
       id="inventoryItem-stock"
-      name='inventoryItem-stock'
     ></textarea>
   </div>
   <div class="mb-3 form-check">
-      <button type="submit" class="btn btn-primary">+ Create Inventory Item</button>
+    <button type="submit" class="btn btn-primary">+ Create Inventory Item</button>
   </div>
 </form>
 <h4>Current Warehouse Inventory:</h4>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">ID#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Price</th>
-      <th scope="col">Number of Units</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#if inventoryItems.length}}
-      {{#each inventoryItems as |inventoryItem|}}
-        <tr>
-          <th scope="row">{{inventoryItem.id}}</th>
-          <td>{{inventoryItem.name}}</td>
-          <td>{{inventoryItem.price}}</td>
-          <td>{{inventoryItem.stock}}</td>
-        </tr>
-      {{/each}}
-    {{/if}}
-  </tbody>
-</table>
+{{#if inventoryItems.length}}
+  <div class="d-flex flex-wrap">
+    {{#each inventoryItems as |inventoryItem|}}
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{inventoryItem.name}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Price: ${{inventoryItem.price}} /unit</h6>
+          <h6 class="card-subtitle mb-2 text-muted">Stock: {{inventoryItem.stock}} units</h6>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+{{/if}}
+
+<script src="./js/warehouse.js"></script>

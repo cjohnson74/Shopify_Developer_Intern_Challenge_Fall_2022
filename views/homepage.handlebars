@@ -1,13 +1,17 @@
 <!-- Loop over each object in the inventory item array -->
+<div class="d-flex flex-wrap">
 {{#each inventoryItems as |inventoryItem|}}
-<div>
     <div class="card" style="width: 18rem;">
         <div class="card-body">
             <h5 class="card-title">{{inventoryItem.name}}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">price: ${{inventoryItem.price}} /unit</h6>
-            <h6 class="card-subtitle mb-2 text-muted">stock: {{inventoryItem.stock}} units</h6>
-            <a href="/api/warehouses/{{inventoryItem.warehouse_id}}" class="card-link">Warehouse Inventory</a>
+            <h6 class="card-subtitle mb-2 text-muted">Price: ${{inventoryItem.price}} /unit</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Stock: {{inventoryItem.stock}} units</h6>
+            <h6 class="card-subtitle mb-2 text-muted">------------------------</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Location: {{warehouse.location}}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Warehouse Name: </h6>
+            <h6 class="card-subtitle mb-2 text-muted">{{warehouse.name}}</h6>
+            <a href="/api/warehouses/{{inventoryItem.warehouse_id}}" class="card-link">View {{warehouse.location}} Warehouse</a>
         </div>
     </div>
-</div>
 {{/each}}
+</div>

@@ -25,15 +25,17 @@
 
 {{#if warehouses.length}}
     <h3>Current Warehouses:</h3>
+    <div class="d-flex flex-wrap">
     {{#each warehouses as |warehouse|}}
         <div class="card" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title">{{location}}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">{{name}}</h6>
-                <a href="/api/warehouse/{{id}}" class="card-link">Warehouse Inventory</a>
+                <a href="/api/warehouses/{{id}}" class="card-link">View Warehouse Inventory</a>
             </div>
         </div>
     {{/each}}
+    </div>
 {{/if}}
 
 <script src="./js/dashboard.js"></script>
