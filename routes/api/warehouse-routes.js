@@ -8,7 +8,17 @@ router.get('/', (req, res) => {
     Warehouse.findAll({
         include: InventoryItem,
     })
-        .then((warehouse) => res.status(200).json(warehouse))
+        // Serialize data so that template can read it
+        .then((warehouseData) =>
+            warehouseData.map((warehouse) => warehouse.get({ plain: true }))
+        )
+
+        // Pass serialized data into template
+        .then((warehouses) =>
+            res.render('homepage', {
+                warehouses,
+            })
+        )
         .catch((err) => {
             console.log(err);
             res.status(500).json(err);
@@ -24,24 +34,22 @@ router.get('/:id', (req, res) => {
         },
         include: InventoryItem, where: { warehouse_id: req.params.id },
     })
-        .then((warehouse) => {
-            if (!warehouse) {
-                res.status(404).json({ message: 'No warehouse found with this id!'});
-                return;
-            }
-            res.status(200).json(warehouse)
-        })
-        .catch((err) => {
-            res.status(500).json(err);
-        });
+        .then((warehouse) => warehouse.get({ plain: true }))
+        .then((warehouses) =>
+            res.render('warehouse', {
+                ...warehouses,
+            })
+        );
 });
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
     // create a new warehouse
-    Warehouse.create(req.body)
+    Warehouse.create({
+        ...req.body,
+    })
         .then((warehouse) => res.status(200).json(warehouse))
         .catch((err) => {
             console.log(err);
-            res.status(400).json(err);
+            res.status(500).json(err);
         });
 });
 router.put('/:id', (req, res) => {
@@ -62,20 +70,20 @@ router.put('/:id', (req, res) => {
         res.status(500).json(err);
     });
 });
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
     // delete a warehouse by its 'id' value
     Warehouse.destroy({
         where: {
             id: req.params.id,
         },
     })
-    .then((warehouse) => {
-        console.log(warehouse);
-        res.json(warehouse)
-    })
-    .catch((err) => {
-        res.status(500).json(err);
-    });
+        .then((warehouses) => {
+            console.log(warehouses);
+            res.json(warehouses)
+        })
+        .catch((err) => {
+            res.status(500).json(err);
+        });
 });
 
 module.exports = router;

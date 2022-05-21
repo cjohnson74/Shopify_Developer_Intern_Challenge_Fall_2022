@@ -4,7 +4,7 @@ DROP DATABASE IF EXISTS shopify_db;
 -- CREATE DATABASE
 CREATE DATABASE shopify_db;
 
--- USE shopify_db;
+USE shopify_db;
 
 -- DROP TABLE IF EXISTS warehouse;
 -- CREATE TABLE warehouse (

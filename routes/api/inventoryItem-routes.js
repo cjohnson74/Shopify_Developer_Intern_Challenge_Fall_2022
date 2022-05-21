@@ -12,7 +12,17 @@ router.get('/', (req, res) => {
             Warehouse,
         ],
     })
-        .then((inventoryItem) => res.status(200).json(inventoryItem))
+        // Serialize data so that template can read it
+        .then((inventoryItemData) =>
+            inventoryItemData.map((inventoryItem) => inventoryItem.get({ plain: true }))
+        )
+
+        // Pass serialized data into template
+        .then((inventoryItem) =>
+            res.render('homepage', {
+                inventoryItems,
+            })
+        )
         .catch((err) => {
             console.log(err);
             res.status(500).json(err);
@@ -31,16 +41,19 @@ router.get('/:id', (req, res) => {
             Warehouse,
         ],
     })
-        .then((inventoryItems) => res.json(inventoryItems))
-        .catch((err) => {
-            console.log(err);
-            res.status(400).json(err);
-        });
+        .then((inventoryItem) => inventoryItem.get({ plain: true }))
+        .then((inventoryItems) =>
+            res.render('inventoryItem', {
+                ...inventoryItems,
+            })
+        );
 });
 
 // create new inventoryItem
 router.post('/', (req, res) => {
-    InventoryItem.create(req.body)
+    InventoryItem.create({
+        ...req.body,
+    })
         .then((inventoryItem) => {
             res.status(200).json(inventoryItem);
         })
@@ -66,7 +79,6 @@ router.put('/:id', (req, res) => {
         res.status(200).json(inventoryItem);
     })
     .catch((err) => {
-
         res.status(500).json(err);
     });
 });
@@ -84,7 +96,7 @@ router.delete('/:id', (req, res) => {
         })
         .catch((err) => {
             console.log(err);
-            res.status(400).json(err);
+            res.status(500).json(err);
         });
 });
 
