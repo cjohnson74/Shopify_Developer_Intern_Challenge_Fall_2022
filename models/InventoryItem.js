@@ -16,7 +16,7 @@ InventoryItem.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        inventoryItem_name: {
+        name: {
             type: DataTypes.STRING,
             allowNull: false,
         },

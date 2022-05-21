@@ -2,32 +2,32 @@ const { Warehouse } = require('../models');
 
 const warehouseData = [
     {
-        warehouse_location: 'California',
-        warehouse_name: 'us-west-1-cal-1a',
+        location: 'California',
+        name: 'us-west-1-cal-1a',
     },
     {
-        warehouse_location: 'Atlanta',
-        warehouse_name: 'us-east-1-atl-1a',
+        location: 'Atlanta',
+        name: 'us-east-1-atl-1a',
     },
     {
-        warehouse_location: 'Nevada',
-        warehouse_name: 'us-west-2-nev-1a',
+        location: 'Nevada',
+        name: 'us-west-2-nev-1a',
     },
     {
-        warehouse_location: 'New York City',
-        warehouse_name: 'us-east-1-nyc-1a',
+        location: 'New York City',
+        name: 'us-east-1-nyc-1a',
     },
     {
-        warehouse_location: 'Ohio',
-        warehouse_name: 'us-east-1-ohi-1a',
+        location: 'Ohio',
+        name: 'us-east-1-ohi-1a',
     },
     {
-        warehouse_location: 'Portland',
-        warehouse_name: 'us-west-2-pdx-1a',
+        location: 'Portland',
+        name: 'us-west-2-pdx-1a',
     },
     {
-        warehouse_location: 'Texas',
-        warehouse_name: 'us-east-1-tex-1a',
+        location: 'Texas',
+        name: 'us-east-1-tex-1a',
     },
 ];
 

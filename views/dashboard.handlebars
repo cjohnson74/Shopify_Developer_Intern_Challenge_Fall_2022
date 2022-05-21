@@ -28,9 +28,9 @@
     {{#each warehouses as |warehouse|}}
         <div class="card" style="width: 18rem;">
             <div class="card-body">
-                <h5 class="card-title">{{warehouse.location}}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">{{warehouse.name}}</h6>
-                <a href="/api/warehouse/{{warehouse.id}}" class="card-link">Warehouse Inventory</a>
+                <h5 class="card-title">{{location}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{name}}</h6>
+                <a href="/api/warehouse/{{id}}" class="card-link">Warehouse Inventory</a>
             </div>
         </div>
     {{/each}}

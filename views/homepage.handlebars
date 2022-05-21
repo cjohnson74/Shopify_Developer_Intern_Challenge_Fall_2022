@@ -1,0 +1,13 @@
+<!-- Loop over each object in the inventory item array -->
+{{#each inventoryItems as |inventoryItem|}}
+<div>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{inventoryItem.name}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">price: ${{inventoryItem.price}} /unit</h6>
+            <h6 class="card-subtitle mb-2 text-muted">stock: {{inventoryItem.stock}} units</h6>
+            <a href="/api/warehouses/{{inventoryItem.warehouse_id}}" class="card-link">Warehouse Inventory</a>
+        </div>
+    </div>
+</div>
+{{/each}}

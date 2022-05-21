@@ -5,8 +5,8 @@ const newInventoryItemHandler = async (event) => {
     const inventoryItemStock = document.querySelector('#inventoryItem-stock').value.trim();
     const inventoryItemWarehouse_id = document.querySelector('#inventoryItem-stock').value.trim();
     const dataElement = document.getElementById('warehouse-id');
-    var inventoryItem_id = dataElement.getAttribute('data-id');
-    console.log(inventoryItem_id);
+    var warehouse_id = dataElement.getAttribute('data-id');
+    console.log(warehouse_id);
     if (inventoryItemName) {
         await fetch('/api/inventoryItems', {
             method: 'POST',
@@ -18,7 +18,7 @@ const newInventoryItemHandler = async (event) => {
         })
         .then((response) => {
             if (response.ok) {
-                fetch('/api/warehouse/' + warehouse_id, {
+                fetch('/api/warehouses/' + warehouse_id, {
                     method: 'GET',
                 });
                 window.location.reload();

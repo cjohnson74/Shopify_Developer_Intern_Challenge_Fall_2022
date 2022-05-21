@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 
         // Pass serialized data into template
         .then((warehouses) =>
-            res.render('homepage', {
+            res.render('dashboard', {
                 warehouses,
             })
         )

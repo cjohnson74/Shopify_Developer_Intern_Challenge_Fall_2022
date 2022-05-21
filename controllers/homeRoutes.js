@@ -21,4 +21,20 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/dashboard', async (req, res) => {
+    try {
+        const warehousesData = await Warehouse.findAll({
+            include: [{ model: InventoryItem }],
+        });
+
+        const warehouses = warehousesData.get({ plain: true });
+
+        res.render('dashboard', {
+            ...warehouses,
+        });
+    }   catch (err) {
+            res.status(500).json(err);
+    }
+});
+
 module.exports = router;

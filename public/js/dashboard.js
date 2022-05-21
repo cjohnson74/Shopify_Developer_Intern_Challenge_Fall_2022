@@ -5,7 +5,7 @@ const newFormHandler = async (event) => {
     const name = document.querySelector('#warehouse-name').value.trim();
 
     if (location && name) {
-        const response = await fetch('/api/warhouses', {
+        const response = await fetch('/api/warehouses', {
             method: 'POST',
             body: JSON.stringify({ location, name }),
             headers: {
@@ -25,7 +25,7 @@ const delButtonHandler = async (event) => {
     if (event.target.hasAttribute('data-id')) {
         const id = event.target.getAttribute('data-id');
 
-        const response = await fetch('/api/warehouses/#{id}', {
+        const response = await fetch('/api/warehouses/${id}', {
             method: 'DELETE',
         });
 
