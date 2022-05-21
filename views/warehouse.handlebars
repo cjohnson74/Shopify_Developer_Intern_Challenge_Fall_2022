@@ -1,0 +1,25 @@
+<h3>
+  {{warehouse.location}}
+  <small class="text-muted">{{warehouse.name}}</small>
+</h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">ID#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Number of Units</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#if inventoryItems.length}}
+      {{#each inventoryItems as |inventoryItem|}}
+        <tr>
+          <th scope="row">{{inventoryItem.id}}</th>
+          <td>{{inventoryItem.name}}</td>
+          <td>{{inventoryItem.price}}</td>
+          <td>{{inventoryItem.stock}}</td>
+        </tr>
+    {{/if}}
+  </tbody>
+</table>
