@@ -23,3 +23,37 @@
     {{/if}}
   </tbody>
 </table>
+
+<h3>Create a New Warehouse Inventory Item:</h3>
+<form class="form new-inventoryItem-form">
+  <div class="mb-3">
+    <label for="inventoryItem-location">Inventory Item Name:</label>
+    <input
+        type="text"
+        class="form-control"
+        id="inventoryItem-name"
+        name="inventoryItem-name"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="inventoryItem-price">Inventory Item Price:</label>
+    <input
+        type="text"
+        class="form-control"
+        id="inventoryItem-price"
+        name='inventoryItem-price'
+    />
+  </div>
+  <div class="mb-3">
+    <label for="warehouse-stock">Inventory Item Price:</label>
+    <input
+        type="text"
+        class="form-control"
+        id="inventoryItem-stock"
+        name='inventoryItem-stock'
+    />
+  </div>
+  <div class="mb-3 form-check">
+      <button type="submit" class="btn btn-primary">+ Create Inventory Item</button>
+  </div>
+</form>

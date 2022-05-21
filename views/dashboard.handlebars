@@ -5,8 +5,8 @@
     <input
         type="text"
         class="form-control"
-        id="inventory-location"
-        name="inventoryItem-location"
+        id="warehouse-location"
+        name="warehouse-location"
     />
   </div>
   <div class="mb-3">
@@ -15,7 +15,7 @@
         type="text"
         class="form-control"
         id="warehouse-name"
-        name='inventory-name'
+        name='warehouse-name'
     />
   </div>
   <div class="mb-3 form-check">
@@ -24,7 +24,7 @@
 </form>
 
 {{#if warehouses.length}}
-    <h3>Current Warehouse Inventory:</h3>
+    <h3>Current Warehouses:</h3>
     {{#each warehouses as |warehouse|}}
         <div class="card" style="width: 18rem;">
             <div class="card-body">

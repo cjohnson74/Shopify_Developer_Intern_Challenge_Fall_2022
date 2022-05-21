@@ -13,18 +13,8 @@ router.get('/', (req, res) => {
         ],
     })
         // Serialize data so that template can read it
-        .then((inventoryItemData) =>
-            inventoryItemData.map((inventoryItem) => inventoryItem.get({ plain: true }))
-        )
-
-        // Pass serialized data into template
-        .then((inventoryItem) =>
-            res.render('homepage', {
-                inventoryItems,
-            })
-        )
+        .then((inventoryItem) => res.status(200).json(inventoryItem))
         .catch((err) => {
-            console.log(err);
             res.status(500).json(err);
         });
 });
@@ -41,18 +31,25 @@ router.get('/:id', (req, res) => {
             Warehouse,
         ],
     })
-        .then((inventoryItem) => inventoryItem.get({ plain: true }))
-        .then((inventoryItems) =>
-            res.render('inventoryItem', {
-                ...inventoryItems,
-            })
-        );
+        .then((inventoryItem) => {
+            if (!inventoryItem) {
+                res.status(404).json({ message: "No inventory item found with this id!" });
+                return;
+            }
+            res.status(200).json(inventoryItem);
+        })
+        .catch((err) => {
+            res.status(500).json(err);
+        });
 });
 
 // create new inventoryItem
 router.post('/', (req, res) => {
     InventoryItem.create({
-        ...req.body,
+        name: req.body.name,
+        price: req.body.price,
+        stock: req.body.stock,
+        warehouse_id: req.body.warehouse_id,
     })
         .then((inventoryItem) => {
             res.status(200).json(inventoryItem);
