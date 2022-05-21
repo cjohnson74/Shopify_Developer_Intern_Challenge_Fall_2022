@@ -22,3 +22,18 @@
       <button type="submit" class="btn btn-primary">+ Create New Warehouse</button>
   </div>
 </form>
+
+{{#if warehouses.length}}
+    <h3>Current Warehouse Inventory:</h3>
+    {{#each warehouses as |warehouse|}}
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{warehouse.location}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{warehouse.name}}</h6>
+                <a href="/api/warehouse/{{warehouse.id}}" class="card-link">Warehouse Inventory</a>
+            </div>
+        </div>
+    {{/each}}
+{{/if}}
+
+<script src="./js/dashboard.js"></script>
