@@ -1,8 +1,54 @@
 <h1><span data-id={{id}} id="warehouse-id"></span>
-  {{location}}
-  <small class="text-muted">{{name}}</small>
-</h1>
+{{location}}
+<small class="text-muted">{{name}}</small>
+<!-- Button trigger Edit Warehouse Modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editWarehouseModal">Edit</button>
+<!-- Edit Warehouse Modal -->
+<div class="modal fade" id="editWarehouseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Warehouse:</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="form new-warehouse-form" id="warehouse-edit-form">
+          <div class="mb-3">
+            <label for="warehouse_location">Warehouse Location:
+            <p class="text-muted fs-6">Current Location: {{location}}</p>
+            </label>
+            <textarea
+              type="text"
+              class="form-control"
+              id="warehouse-location"
+              autofocus=""
+            ></textarea>
+          </div>
+        <div class="mb-3">
+          <label for="warehouse_name">Warehouse Name:
+          <p class="text-muted fs-6">Current Name: {{name}}</p>
+          </label>
+          <textarea
+            type="text"
+            class="form-control"
+            id="warehouse-name"
+            autofocus=""
+          ></textarea>
+        </div>
+        <div class="mb-3 form-check">
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" style="display: none" class="btn btn-primary" id="warehouse-edit-submit" data-id={{id}}>+ CONFIRM Warehouse Edits</button>
+        <button type="button" style="display: block" class="btn btn-primary" id="warehouse-edit-first" data-id={{id}}>+ Submit Warehouse Edits</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 <button type="button" class="btn btn-danger" id="warehouse-destroy" data-id={{id}}>DELETE</button>
+</h1>
 <h4>Create a New Warehouse Inventory Item:</h4>
 <form class="form" id="new-inventoryItem-form">
   <div class="mb-3">
@@ -48,4 +94,4 @@
   </div>
 {{/if}}
 
-<script src="./js/warehouse.js"></script>
+<script src="/public/js/warehouse.js"></script>

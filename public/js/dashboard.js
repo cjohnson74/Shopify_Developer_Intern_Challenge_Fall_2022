@@ -1,11 +1,11 @@
-const newFormHandler = async (event) => {
-    event.preventDefault();
+const newWarehouseFormHandler = async (event) => {
 
-    const location = docuement.querySelector('#warehouse-location').value.trim();
+    const location = document.querySelector('#warehouse-location').value.trim();
     const name = document.querySelector('#warehouse-name').value.trim();
-
+    console.log(name, location);
+    event.preventDefault();
     if (location && name) {
-        const response = await fetch('/api/warehouses', {
+        const response = await fetch('/api/warehouses/', {
             method: 'POST',
             body: JSON.stringify({ location, name }),
             headers: {
@@ -14,7 +14,7 @@ const newFormHandler = async (event) => {
         });
 
         if (response.ok) {
-            document.location.replace('/dashboard');
+            document.location.replace('/api/warehouses');
         } else {
             alert('Failed to create warehouse');
         }
@@ -22,5 +22,5 @@ const newFormHandler = async (event) => {
 };
 
 document
-    .querySelector('.new-warehouse-form')
-    .addEventListener('submit', newFormHandler);
+    .querySelector('#new-warehouse-form')
+    .addEventListener('submit', newWarehouseFormHandler);

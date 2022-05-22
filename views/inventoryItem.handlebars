@@ -1,0 +1,36 @@
+<h1><span data-id={{id}} id="inventoryItem-id"></span>
+{{name}}
+<small class="text-muted">{{name}}</small></h1>
+<button type="button" class="btn btn-danger" id="inventoryItem-destroy" data-id={{id}}>DELETE</button>
+<h4>Create a New Warehouse Inventory Item:</h4>
+<form class="form" id="new-inventoryItem-form">
+  <div class="mb-3">
+    <label for="inventoryItem_location">Inventory Item Name:</label>
+    <textarea
+      type="text"
+      class="form-control"
+      id="inventoryItem-name"
+    ></textarea>
+  </div>
+  <div class="mb-3">
+    <label for="inventoryItem_price">Inventory Item Price:</label>
+    <textarea
+      type="text"
+      class="form-control"
+      id="inventoryItem-price"
+    ></textarea>
+  </div>
+  <div class="mb-3">
+    <label for="inventoryItem_stock">Number of Units:</label>
+    <textarea
+      type="text"
+      class="form-control"
+      id="inventoryItem-stock"
+    ></textarea>
+  </div>
+  <div class="mb-3 form-check">
+    <button type="submit" class="btn btn-primary">+ Create Inventory Item</button>
+  </div>
+</form>
+
+<script src="/public/js/inventoryItem.js"></script>

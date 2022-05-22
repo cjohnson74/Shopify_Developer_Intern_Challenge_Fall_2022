@@ -31,16 +31,12 @@ router.get('/:id', (req, res) => {
             Warehouse,
         ],
     })
-        .then((inventoryItem) => {
-            if (!inventoryItem) {
-                res.status(404).json({ message: "No inventory item found with this id!" });
-                return;
-            }
-            res.status(200).json(inventoryItem);
+    .then((inventoryItem) => inventoryItem.get({ plain: true }))
+    .then((inventoryItem) =>
+        res.render('inventoryItem', {
+            ...inventoryItem,
         })
-        .catch((err) => {
-            res.status(500).json(err);
-        });
+    );
 });
 
 // create new inventoryItem

@@ -9,7 +9,8 @@ InventoryItem.belongsTo(Warehouse, {
 // Warehouses have many InventoryItems
 Warehouse.hasMany(InventoryItem, {
     foreignKey: 'warehouse_id',
-    onDelete: 'CASCADE',
+    onDelete: 'cascade',
+    hooks: true
 });
 
 module.exports = {

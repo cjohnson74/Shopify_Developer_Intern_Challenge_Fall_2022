@@ -27,6 +27,26 @@ const newInventoryItemHandler = async (event) => {
     }
 }
 
+const delInventoryItemButtonHandler = async (event) => {
+    if (event.target.hasAttribute('data-id')) {
+        const id = event.target.getAttribute('data-id');
+
+        const response = await fetch(`/api/inventoryItems/${id}`, {
+            method: 'DELETE',
+        });
+
+        if (response.ok) {
+            document.location.replace('/');
+        } else {
+            alert('Inventory item failed to delete.');
+        }
+    }
+};
+
 document
     .querySelector('#new-inventoryItem-form')
     .addEventListener('submit', newInventoryItemHandler);
+
+document
+    .querySelector('#inventoryItem-destroy')
+    .addEventListener('click', delInventoryItemButtonHandler);

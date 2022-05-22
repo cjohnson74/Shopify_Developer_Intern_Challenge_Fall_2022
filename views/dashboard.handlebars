@@ -1,25 +1,23 @@
 <h3>Create a New Warehouse:</h3>
-<form class="form new-warehouse-form">
+<form class="form" id="new-warehouse-form">
   <div class="mb-3">
-    <label for="warehouse-location">Warehouse Location:</label>
-    <input
+    <label for="warehouse_location">Warehouse Location:</label>
+    <textarea
         type="text"
         class="form-control"
         id="warehouse-location"
-        name="warehouse-location"
-    />
+    ></textarea>
   </div>
   <div class="mb-3">
-    <label for="warehouse-name">Warehouse Name:</label>
-    <input
+    <label for="warehouse_name">Warehouse Name:</label>
+    <textarea
         type="text"
         class="form-control"
         id="warehouse-name"
-        name='warehouse-name'
-    />
+    ></textarea>
   </div>
   <div class="mb-3 form-check">
-      <button type="submit" class="btn btn-primary">+ Create New Warehouse</button>
+      <button type="submit" class="btn btn-primary" >+ Create New Warehouse</button>
   </div>
 </form>
 
@@ -38,4 +36,4 @@
     </div>
 {{/if}}
 
-<script src="./js/dashboard.js"></script>
+<script src="/public/js/dashboard.js"></script>

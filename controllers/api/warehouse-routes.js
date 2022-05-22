@@ -35,9 +35,9 @@ router.get('/:id', (req, res) => {
         include: InventoryItem, where: { warehouse_id: req.params.id },
     })
         .then((warehouse) => warehouse.get({ plain: true }))
-        .then((warehouses) =>
+        .then((warehouse) =>
             res.render('warehouse', {
-                ...warehouses,
+                ...warehouse,
             })
         );
 });
@@ -59,16 +59,41 @@ router.put('/:id', (req, res) => {
             id: req.params.id,
         },
     })
-    .then((warehouse) => {
-        if (!warehouse) {
-            res.status(404).json({ message: "No warehouse with this id!" });
-            return;
-        }
-        res.status(200).json(warehouse);
-    })
-    .catch((err) => {
-        res.status(500).json(err);
-    });
+        .then((warehouse) => {
+            // find all associated inventoryItems from WarehouseInventoryItems
+            return WarehouseInventoryItem.findAll({ where: { warehouse_id: req.params.id } });
+        })
+        .then((warehouseInventoryItems) => {
+            // get list of current inventoryItem_ids
+            const warehouseInventoryItemIds = warehouseInventoryItems.map(
+                ({ inventoryItem_id }) => inventoryItem_id
+            );
+            const newWarehouseInventoryItems = req.body.InventoryItemIds
+                .filter((inventoryItem_id) => !warehouseInventoryItemIds.includes(inventoryItem_id))
+                .map((inventoryItem_id) => {
+                    return {
+                        warehouse_id: req.params.id,
+                        inventoryItem_id,
+                    };
+                });
+            // figure out which ones to remove
+            const warehouseInventoryItemsToRemove = warehouseInventoryItems
+                .filter(({ inventoryItem_id }) => !req.body.inventoryItemIds.includes(inventoryItem_id))
+                .map(({ id }) => id);
+
+            // run both actions
+            return Promise.all([
+                WarehouseInventoryItem.destroy({ where: { id: warehouseInventoryItemsToRemove } }),
+                WarehouseInventoryItem.bulkCreate(newWarehouseInventoryItems),
+            ]);
+        })
+        .then((updatedWarehouseInventoryItems) =>
+            res.status(200).json(updatedWarehouseInventoryItems)
+        )
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 router.delete('/:id', async (req, res) => {
     // delete a warehouse by its 'id' value
