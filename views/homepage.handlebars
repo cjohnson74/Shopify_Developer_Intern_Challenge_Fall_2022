@@ -14,9 +14,11 @@
             <a href="/api/warehouses/{{inventoryItem.warehouse_id}}" class="card-link">View {{warehouse.location}} Warehouse</a>
             <div>
                 <!-- Button trigger Edit Warehouse Modal -->
-                <a href="/api/inventoryItems/{{id}}"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editInventoryItemModal">Edit Item</button></a>
+                <a href="/api/inventoryItems/{{id}}"><button type="button" class="btn btn-primary">Edit Item</button></a>
             </div>
         </div>
     </div>
 {{/each}}
 </div>
+
+{{!-- <script src="/js/inventoryItem.js"></script> --}}

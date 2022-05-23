@@ -1,36 +1,41 @@
 <h1><span data-id={{id}} id="inventoryItem-id"></span>
 {{name}}
-<small class="text-muted">{{name}}</small></h1>
-<button type="button" class="btn btn-danger" id="inventoryItem-destroy" data-id={{id}}>DELETE</button>
-<h4>Create a New Warehouse Inventory Item:</h4>
-<form class="form" id="new-inventoryItem-form">
+<small class="text-muted">${{price}}</small></h1>
+<div>
+    <button type="button" class="btn btn-danger" id="inventoryItem-destroy" data-id={{id}}>DELETE</button>
+</div>
+<h4>Edit Warehouse Inventory Item:</h4>
+<form class="form" id="edit-inventoryItem-form">
   <div class="mb-3">
-    <label for="inventoryItem_location">Inventory Item Name:</label>
+    <label for="inventoryItem_location">Current Inventory Item Name: {{name}}</label>
     <textarea
       type="text"
+      placeholder="Edit inventory item name..."
       class="form-control"
       id="inventoryItem-name"
     ></textarea>
   </div>
   <div class="mb-3">
-    <label for="inventoryItem_price">Inventory Item Price:</label>
+    <label for="inventoryItem_price">Current Inventory Item Price: ${{price}} /unit</label>
     <textarea
       type="text"
+      placeholder="Edit inventory item price without dollar sign..."
       class="form-control"
       id="inventoryItem-price"
     ></textarea>
   </div>
   <div class="mb-3">
-    <label for="inventoryItem_stock">Number of Units:</label>
+    <label for="inventoryItem_stock">Current Number of Units: {{stock}} units</label>
     <textarea
       type="text"
+      placeholder="Edit number of inventory item units..."
       class="form-control"
       id="inventoryItem-stock"
     ></textarea>
   </div>
   <div class="mb-3 form-check">
-    <button type="submit" class="btn btn-primary">+ Create Inventory Item</button>
+    <button type="submit" class="btn btn-primary">+ Edit Inventory Item</button>
   </div>
 </form>
 
-<script src="/public/js/inventoryItem.js"></script>
+{{!-- <script src="/js/inventoryItem.js"></script> --}}

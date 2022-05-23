@@ -32,11 +32,11 @@ router.get('/:id', (req, res) => {
         ],
     })
     .then((inventoryItem) => inventoryItem.get({ plain: true }))
-    .then((inventoryItem) =>
+    .then((inventoryItem) => {
         res.render('inventoryItem', {
             ...inventoryItem,
         })
-    );
+    });
 });
 
 // create new inventoryItem
@@ -62,7 +62,7 @@ router.put('/:id', (req, res) => {
     InventoryItem.update(req.body, {
         where: {
             id: req.params.id,
-        },
+        }
     })
     .then((inventoryItem) => {
         if (!inventoryItem) {
@@ -76,21 +76,21 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
     // delete one inventoryItem by its 'id' value
     InventoryItem.destroy({
         where: {
             id: req.params.id,
         },
     })
-        .then((inventoryItems) => {
-            console.log(inventoryItems);
-            res.json(inventoryItems);
-        })
-        .catch((err) => {
-            console.log(err);
-            res.status(500).json(err);
-        });
+    .then((inventoryItems) => {
+        console.log(inventoryItems);
+        res.json(inventoryItems);
+    })
+    .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+    });
 });
 
 module.exports = router;
